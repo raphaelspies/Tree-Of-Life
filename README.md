@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# About
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Tree Of Life is a dynamically rendered binary tree model built using Test Driven Development with Create React App, Jest, and React Testing Library.
 
 ## Available Scripts
 
