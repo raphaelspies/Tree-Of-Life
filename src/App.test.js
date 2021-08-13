@@ -48,18 +48,23 @@ describe('<Tree />', () => {
     const click = jest.fn();
 
   })
-  test('clicking Add Leaf Node Button works', () => {
-    const addNodeButton = screen.getByText(/Add Leaf Node/i);
-    fireEvent.click(addNodeButton)
-  })
 
   test('Typing into the newNodeValueField changes its value', () => {
-    // fireEvent.keyDown((screen.getByPlaceholderText('New node value')), {key: '1', code: 'Digit1'})
     const newNodeValueField = document.getElementById('newNodeValueField');
     fireEvent.change(newNodeValueField, {target: {value: '1'}})
     expect(newNodeValueField).toHaveDisplayValue('1');
   })
 
+  test('New leaf node is created on button click', () => {
+    const newNodeValueField = document.getElementById('newNodeValueField');
+    fireEvent.change(newNodeValueField, {target: {value: '7'}})
+
+    const addNodeButton = screen.getByText(/Add Leaf Node/i);
+    fireEvent.click(addNodeButton)
+
+    const newNode = screen.getByDisplayValue('7')
+    expect(newNode).toHaveDisplayValue('7');
+  })
 })
 
 describe('<Node />', () => {
