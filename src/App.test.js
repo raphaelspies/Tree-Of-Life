@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react';
+import { fireEvent, waitFor, render, screen } from '@testing-library/react';
+
 import App from './App';
 
 // test('renders learn react link', () => {
@@ -13,7 +14,7 @@ beforeEach(() => {
 
 describe('<App />', () => {
   test('renders app', () => {
-    // render(<App />);
+    // render(<App  />);
     const header = screen.getByText(/Tree Of Life/i);
     expect(header).toBeInTheDocument();
   })
@@ -25,10 +26,27 @@ describe('<Tree />', () => {
     expect(addNodeButton).toBeInTheDocument();
   })
 
-  test('clicking Add Leaf Node Button logs to console', () => {
+  test('renders new node value field', () => {
+    const valueField = (screen.getByPlaceholderText('New node value'))
+  })
+
+  test('Add Leaf Node button doesnt automatically submit', () => {
     const addNodeButton = screen.getByText(/Add Leaf Node/i);
-    fireEvent.click(addNodeButton)
+    const click = jest.fn();
 
   })
+  test('clicking Add Leaf Node Button works', () => {
+    const addNodeButton = screen.getByText(/Add Leaf Node/i);
+    fireEvent.click(addNodeButton)
+  })
+
+  describe('<Node />', () => {
+    test('<Node /> exists with value 5', () => {
+      // render(<Node initVal={5}/>)
+      const nodeVal5 = screen.getByText(/Value: 5/i);
+      expect(nodeVal5).toBeInTheDocument();
+    })
+  })
+
 })
 
