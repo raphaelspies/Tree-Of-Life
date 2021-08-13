@@ -41,6 +41,7 @@ describe('<Tree />', () => {
 
   test('renders new node value field', () => {
     const valueField = (screen.getByPlaceholderText('New node value'))
+    expect(valueField).toBeInTheDocument();
   })
 
   test('Add Leaf Node button doesnt automatically submit', () => {
