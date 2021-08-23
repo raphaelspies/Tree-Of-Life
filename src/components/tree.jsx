@@ -4,7 +4,8 @@ import Node from './node';
 
 export default function Tree (props) {
   const [ newNodeValue, setNewNodeValue] = useState(0)
-  const [ nodeTree, setNodeTree ] = useState([5, 1])
+  const [ nodeTree, setNodeTree ] = useState([5])
+  const [ children, setChildren ] = useState([6, 11])
 
   function addLeafNode (event) {
     event.preventDefault();
@@ -32,7 +33,7 @@ export default function Tree (props) {
         <input type="text" name="newNodeValueField" id="newNodeValueField" placeholder="New node value" onChange={changeNewNodeValueField}/>
       </form>
       {nodeTree.map((node, index) => (
-        <Node initVal={node} key={index}/>
+        <Node value={node} key={index} children={children}/>
       ))}
     </div>
   )
